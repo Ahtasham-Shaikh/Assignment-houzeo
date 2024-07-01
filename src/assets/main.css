@@ -1,0 +1,33 @@
+.flex{
+  display: flex;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+form{
+  gap: 20px
+}
+
+.field-wrapper{
+  gap: 25px;
+}
+
+.fields{
+  gap: 10px;
+}
+
+input[type="submit"]{
+  width: fit-content;
+}
+
+table,td, th{
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+td, th{
+  width: 130px;
+  text-align: center;
+}

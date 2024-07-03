@@ -8,6 +8,6 @@
 <script setup>
     const props = defineProps({
         field: String,
-        answer: String,
+        answer: null,
     })
 </script>

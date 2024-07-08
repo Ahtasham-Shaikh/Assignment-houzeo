@@ -35,3 +35,8 @@ td, th{
 .fit-content{
   width: fit-content;
 }
+
+.error-p{
+  margin: 5px 0;
+  color: red;
+}

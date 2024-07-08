@@ -19,7 +19,11 @@
         <button @click="removeGroupField(obj)" type="button" class="fit-content">Remove Fields</button>
       </div>
 
+        <div>
+        
+        <p class="error-p" v-if="!isTwoGroup">Minimum two group fields are required to submit the form</p>
       <button @click="addGroupField" type="button" class="fit-content">Add More Fields</button>
+        </div>
 
       <div class="field-wrapper flex">
         <label :for="'dob-' + id.value">{{ dob.fieldName }}</label>
@@ -71,14 +75,14 @@
 </template>
 
 <script setup>
-  import { reactive, ref } from 'vue';
-  import FilesInput from './FilesInput.vue';
+  import { reactive, ref, computed } from 'vue';
 
     let handleFileChange = (event) => {
         let fileName = event.target.files[0].name
         file.value = fileName
     }
 
+    
   let today = new Date().toISOString().split('T')[0];
   let id = ref(1);
 
@@ -90,8 +94,18 @@
         { fieldName: 'Email', value: '' },
         { fieldName: 'Mobile Number', value: '' }
       ]
+    }, 
+    {
+      id: id,
+      fields: [
+        { fieldName: 'Full Name', value: '' },
+        { fieldName: 'Email', value: '' },
+        { fieldName: 'Mobile Number', value: '' }
+      ]
     }
   ]);
+
+  const isTwoGroup = computed(() => groupFields.length >= 2);
 
   const removeGroupField = (obj) => {
     const index = groupFields.findIndex(o => o === obj);
@@ -139,7 +153,9 @@
   };
 
   const handleSubmit = () => {
-    emit('form-submitted', fieldsList, groupFields);
+    if(isTwoGroup.value){
+        emit('form-submitted', fieldsList, groupFields);
+    }
   };
 
   const addGroupField = () => {

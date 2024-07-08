@@ -11,7 +11,6 @@ let onFormSubmitted = (fields, groupFields) => {
   showResult.value = true
   Object.assign(fieldsData, fields);
   groupFieldsData = groupFields
-  console.log(groupFieldsData)
 }
 </script>
 

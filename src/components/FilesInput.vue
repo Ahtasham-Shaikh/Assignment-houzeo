@@ -1,17 +1,15 @@
 <template>
     <div class="flex">
-        <input style="width: 180px;" @change="handleFileChange" :v-model="props.fileModel" type="file" multiple accept=".jpeg, .pdf" />
-        <img class="del-btn" height="24px" src="/delete.svg" />
+        <input @change="handleFileChange" :v-model="props.fileModel" type="file" multiple accept=".jpeg, .pdf" />
     </div>
 </template>
 
 <script setup>
-
-    let props = defineProps({
-        fileModel: Array
-    })
+    let emit = defineEmits('file-change', )
+    let fileName;
 
     let handleFileChange = (event) => {
-        console.log(props.fileModel)
+        fileName = event.target.files[0].name
+        emit('file-change', fileName)
     }
 </script>

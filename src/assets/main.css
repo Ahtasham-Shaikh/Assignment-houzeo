@@ -31,3 +31,7 @@ td, th{
   width: 130px;
   text-align: center;
 }
+
+.fit-content{
+  width: fit-content;
+}

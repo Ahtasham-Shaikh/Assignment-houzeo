@@ -5,10 +5,13 @@ import Result from './components/Result.vue';
 
 let showResult = ref(false)
 let fieldsData = reactive({})
+let groupFieldsData = reactive({})
 
-let onFormSubmitted = (fields) => {
+let onFormSubmitted = (fields, groupFields) => {
   showResult.value = true
-  fieldsData = fields
+  Object.assign(fieldsData, fields);
+  groupFieldsData = groupFields
+  console.log(groupFieldsData)
 }
 </script>
 
@@ -16,6 +19,6 @@ let onFormSubmitted = (fields) => {
   <div id="app">
     <h1>Form</h1>
     <Form @form-submitted="onFormSubmitted"></Form>
-    <Result :list="fieldsData"v-if="showResult"></Result>
+    <Result :list2="groupFieldsData" :list="fieldsData"v-if="showResult"></Result>
     </div>
 </template>
